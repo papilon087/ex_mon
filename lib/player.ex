@@ -1,6 +1,6 @@
 defmodule ExMon.Player do
   # Variavel de modulo
-  @ require_keys  [:life, :move_avg, :move_heal, :move_rnd, :name]
+  @require_keys [:life, :move_avg, :move_heal, :move_rnd, :name]
   @max_life 100
 
   @enforce_keys @require_keys
