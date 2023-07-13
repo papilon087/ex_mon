@@ -18,8 +18,21 @@ defmodule ExMon do
     Status.print_round_message()
   end
 
-  # Função para o usuário passar suas estruções/habilidades.
+  # Função para o ver o movimento do jogador.
   def make_move(move) do
-    Actions.fetch_move(move)
+    move
+    |> Actions.fetch_move()
+    |> do_move()
+  end
+
+  # Função privada para retornar o erro do movimento do jogador.
+  defp do_move({:error, move}), do: Status.print_wrong_move_message(move)
+
+  # Função para retornar o sucesso do movimento do jogador.
+  defp do_move({:ok, move}) do
+    case move do
+      :move_heal -> "Realiza_cura"
+      move -> Actions.attack(move)
+    end
   end
 end
