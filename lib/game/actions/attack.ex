@@ -29,5 +29,13 @@ defmodule ExMon.Game.Actions.Attack do
     opponent
     |> Game.fetch_player()
     |> Map.put(:life, life)
+    |> update_game(opponent)
+  end
+
+  # Função pega informações do jogo faz um novo valor de vida para pegar o novo estado e guarda no estado atual.
+  defp update_game(player, opponent) do
+    Game.info()
+    |> Map.put(opponent, player)
+    |> Game.update()
   end
 end
