@@ -7,7 +7,7 @@ defmodule ExMon.Game do
     Agent.start_link(fn -> initial_value end, name: __MODULE__)
   end
 
-  # Função para pegar informações do jogo.
+  # Função para pegar informações estado do jogo.
   def info do
     Agent.get(__MODULE__, & &1)
   end
@@ -17,4 +17,7 @@ defmodule ExMon.Game do
 
   # Função para retornar quem vai jogar, maquina ou jogador.
   def turn, do: Map.get(info(), :turn)
+
+  # Função para pegar o valor de computador/player, dependendo do atom que receber.
+  def fetch_player(player), do: Map.get(info(), player)
 end
