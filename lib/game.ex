@@ -14,4 +14,7 @@ defmodule ExMon.Game do
 
   # Função que retorna o próprio jogador para uso.
   def player, do: Map.get(info(), :player)
+
+  # Função para retornar quem vai jogar, maquina ou jogador.
+  def turn, do: Map.get(info(), :turn)
 end

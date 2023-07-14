@@ -1,10 +1,14 @@
+# Modulo resposavel por todas as acões do jogo.
 defmodule ExMon.Game.Actions do
-  # Modulo resposavel por todas as acões do jogo.
   alias ExMon.Game
+  alias ExMon.Game.Actions.Attack
 
   # Função para o ataque do jogador.
   def attack(move) do
-
+    case Game.turn() do
+      :player -> Attack.attack_opponent(:computador, move)
+      :computador -> Attack.attack_opponent(:player, move)
+    end
   end
 
   # Função para ver o movimento do player.
