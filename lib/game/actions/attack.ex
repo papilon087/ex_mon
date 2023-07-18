@@ -8,7 +8,7 @@ defmodule ExMon.Game.Actions.Attack do
 
   # Calcula o dano do oponent.
   def attack_opponent(opponent, move) do
-    damage =  calculate_power(move)
+    damage = calculate_power(move)
 
     opponent
     |> Game.fetch_player()
@@ -39,6 +39,6 @@ defmodule ExMon.Game.Actions.Attack do
     |> Map.put(opponent, player)
     |> Game.update()
 
-   Status.print_move_message(opponent, :attack, damage)
+    Status.print_move_message(opponent, :attack, damage)
   end
 end
