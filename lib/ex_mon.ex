@@ -15,7 +15,7 @@ defmodule ExMon do
     |> create_player(:punch, :kick, :heal)
     |> Game.start(player)
 
-    Status.print_round_message()
+    Status.print_round_message(Game.info())
   end
 
   # Função para o ver o movimento do jogador.
@@ -34,5 +34,7 @@ defmodule ExMon do
       :move_heal -> "Realiza_cura"
       _ -> Actions.attack(move)
     end
+
+    Status.print_round_message(Game.info())
   end
 end

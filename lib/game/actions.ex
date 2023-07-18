@@ -6,8 +6,8 @@ defmodule ExMon.Game.Actions do
   # Função para o ataque do jogador.
   def attack(move) do
     case Game.turn() do
-      :player -> Attack.attack_opponent(:computador, move)
-      :computador -> Attack.attack_opponent(:player, move)
+      :player -> Attack.attack_opponent(:computer, move)
+      :computer -> Attack.attack_opponent(:player, move)
     end
   end
 
