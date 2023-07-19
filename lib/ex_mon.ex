@@ -2,7 +2,10 @@ defmodule ExMon do
   alias ExMon.{Game, Player}
   alias ExMon.Game.{Actions, Status}
 
+  # Variaveis de modulo.
   @computer_name "Robotinik"
+
+  @computer_moves [:move_avg, :move_rnd, :move_heal]
 
   # Função para criar o jogador, suas habilidades.
   def create_player(name, move_rnd, move_avg, move_heal) do
@@ -23,6 +26,8 @@ defmodule ExMon do
     move
     |> Actions.fetch_move()
     |> do_move()
+
+    computer_move(Game.info())
   end
 
   # Função privada para retornar o erro do movimento do jogador.
@@ -37,4 +42,13 @@ defmodule ExMon do
 
     Status.print_round_message(Game.info())
   end
+
+  # Função para ver o movimento do computador de acordo com os parâmetros.
+  defp computer_move(%{turn: :computer, status: :continue}) do
+    move = {:ok, Enum.random(@computer_moves)}
+    do_move(move)
+  end
+
+  # Função para devolver error com movimentos errados.
+  defp computer_move(_), do: :ok
 end
