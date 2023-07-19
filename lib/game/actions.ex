@@ -1,13 +1,21 @@
 # Modulo resposavel por todas as acões do jogo.
 defmodule ExMon.Game.Actions do
   alias ExMon.Game
-  alias ExMon.Game.Actions.Attack
+  alias ExMon.Game.Actions.{Attack, Heal}
 
   # Função para o ataque do jogador.
   def attack(move) do
     case Game.turn() do
       :player -> Attack.attack_opponent(:computer, move)
       :computer -> Attack.attack_opponent(:player, move)
+    end
+  end
+
+  # Função para curar.
+  def heal() do
+    case Game.turn() do
+      :player -> Heal.heal_life(:player)
+      :computer -> Heal.heal_life(:computer)
     end
   end
 

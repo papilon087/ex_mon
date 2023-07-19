@@ -31,7 +31,7 @@ defmodule ExMon do
   # Função para retornar o sucesso do movimento do jogador.
   defp do_move({:ok, move}) do
     case move do
-      :move_heal -> "Realiza_cura"
+      :move_heal -> Actions.heal()
       _ -> Actions.attack(move)
     end
 
