@@ -23,10 +23,19 @@ defmodule ExMon do
 
   # Função para o ver o movimento do jogador.
   def make_move(move) do
+    Game.info()
+    |> Map.get(:status)
+    |> handle_status(move)
+  end
+
+  # Função para imprimir o status do jogo.
+  defp handle_status(:game_over, _move), do: Status.print_round_message(Game.info)
+
+  # Função para fazer o movimento padrão, como sempre normal.
+  defp handle_status(_other, move) do
     move
     |> Actions.fetch_move()
     |> do_move()
-
     computer_move(Game.info())
   end
 
